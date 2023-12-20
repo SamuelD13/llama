@@ -61,6 +61,7 @@ def main(
             f"> {result['generation']['role'].capitalize()}: {result['generation']['content']}"
         )
         print("\n==================================\n")
+    return "All is okay"
 
 
 if __name__ == "__main__":

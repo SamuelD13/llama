@@ -86,18 +86,21 @@ class Transmitter:
         return(results)
     
 def main(
-    user_input: str,
     ckpt_dir: str,
     tokenizer_path: str,
     temperature: float = 0.6,
     top_p: float = 0.9,
     max_seq_len: int = 512,
-    max_batch_size: int = 8,
+    max_batch_size: int = 6,
     max_gen_len: Optional[int] = None,
-    context_path: str = "context.txt"
+    context_path: str = "context.txt",
+    input_path: str = "input.txt"
 ):
+    
     transmitter = Transmitter()
-    user_input = input("User: ")
+
+    with open(input_path, 'r') as file:
+        user_input = file.read()
     results = transmitter.prompt_llama(user_input, ckpt_dir, tokenizer_path, temperature, top_p, max_seq_len, max_batch_size, max_gen_len, context_path)
     print(results[0])
     transmitter.run_git_command(results[0]['generation']['content'])
