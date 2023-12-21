@@ -94,7 +94,8 @@ def main(
     max_batch_size: int = 6,
     max_gen_len: Optional[int] = None,
     context_path: str = "context.txt",
-    input_path: str = "input.txt"
+    input_path: str = "input.txt",
+    output_path: str = "output/answer.txt"
 ):
     
     transmitter = Transmitter()
@@ -102,9 +103,11 @@ def main(
     with open(input_path, 'r') as file:
         user_input = file.read()
     results = transmitter.prompt_llama(user_input, ckpt_dir, tokenizer_path, temperature, top_p, max_seq_len, max_batch_size, max_gen_len, context_path)
-    print(results[0])
-    transmitter.run_git_command(results[0]['generation']['content'])
-    return
+    answer = results[0]['generation']['content']
+    with open(output_path, 'w') as file:
+        file.write(answer)
+    #transmitter.run_git_command(results[0]['generation']['content'])
+    return 1
 
 if __name__ == "__main__":
     fire.Fire(main)
