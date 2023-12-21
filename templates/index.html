@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Processor</title>
+    <style>
+    body {
+    padding: 25px;
+    background-color: whitesmoke;
+    color: black;
+    font-size: 25px;
+    }
+
+    .dark-mode {
+    background-color: black;
+    color: white;
+    }
+    </style>
+</head>
+<body>
+    <h1>Text Processor</h1>
+    <form action="/prompt" method="post">
+        <label for="user_input">Enter text:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% if output %}
+        <p>Processed Output: {{ output }}</p>
+    {% endif %}
+
+    <button onclick="myFunction()">Toggle dark mode</button>
+
+    <script>
+    function myFunction() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+    }
+    </script>
+
+</body>
+</html>
