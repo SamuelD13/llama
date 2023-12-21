@@ -20,4 +20,5 @@ cd /home/sam/llama
 python -m torch.distributed.launch --nproc_per_node=1 transmitter.py \
     --ckpt_dir llama-2-7b-chat/ \
     --tokenizer_path tokenizer.model \
-    --context_path context.txt
+    --context_path context-python.txt \
+    --output_path output/answer-python.txt

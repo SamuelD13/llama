@@ -1,0 +1,19 @@
+ To find out what changes were made between version 16 and 17 of the `odoo` repository, we can use the `GitPython` library to query the Git repository. Here's an example of how to do this:
+```
+from git import Repository
+def get_modified_files_between_versions(version1, version2):
+    # Initialize the Git repository
+    repo = Repository('.')
+    # Get the commit objects for the two versions
+    commit1 = repo.log(version1).commit
+    commit2 = repo.log(version2).commit
+    # Get the diff between the two commits
+    diff = commit2.diff(commit1)
+    # Iterate over the modified files and print their paths
+    for file in diff.diff_files:
+        print(file.path)
+
+# Example usage:
+get_modified_files_between_versions('16', '17')
+```
+This code will print the paths of all the files that were modified between version 16 and 17 of the `odoo` repository.
