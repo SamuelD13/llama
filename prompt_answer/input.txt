@@ -1,0 +1,1 @@
+The files deleted between a branch called 15.0 and another one called 16.0

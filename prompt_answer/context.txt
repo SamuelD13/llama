@@ -1,0 +1,1 @@
+Write a git command only from the given instructions. No explanation or other text.
