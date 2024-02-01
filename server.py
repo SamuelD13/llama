@@ -13,10 +13,10 @@ def index():
 @app.route('/prompt', methods=['POST'])
 def prompt() :
     if flask.request.method == 'POST':
-        question = flask.request.form['user_input']
+        request = flask.request.form['user_input']
 
         with open("input_txt", 'w') as file :
-            file.write(question)
+            file.write(request)
 
         try :
             result = subprocess.run(['sbatch', "transmit.sbatch"], check=True, stdout=subprocess.PIPE, text=True)
